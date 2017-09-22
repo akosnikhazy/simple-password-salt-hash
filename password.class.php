@@ -5,12 +5,12 @@ class password
 	{/**
 	  * Generate a salt. In a good system every salt is unique. When user creates new password it is good to generate new salt
 	  * Using a random number and the time() there is almost no chance you get the same salt for two passwords and it is hard 
-	  * to predict. Version 1.1 uses mt_rand and sha256 for this.
+	  * to predict. Version 1.1 uses mt_rand and sha256 for this. Version 1.2 openssl_random_pseudo_bytes (10)
 	  * param: $key: if you want a system level + value for harder guess work. More secure. Overdone.
 	  * 
 	  * return: string(64) SALT
 	  */
-		return hash('sha256',mt_rand() . $key . time());
+		return hash('sha256',openssl_random_pseudo_bytes (10) . $key . time());
 	}
 	
 	public function hashPassword($pass,$salt = false)
