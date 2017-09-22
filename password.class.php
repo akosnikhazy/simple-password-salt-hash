@@ -1,3 +1,4 @@
+<?php
 class password
 {
 	public function generateSalt($key = '')
@@ -50,3 +51,4 @@ class password
 	}
 	
 }
+?>
